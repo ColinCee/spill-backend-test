@@ -33,6 +33,7 @@ const start = async () => {
 
     const address = server.server.address();
     const port = typeof address === 'string' ? address : address?.port;
+    console.log(port);
   } catch (err) {
     server.log.error(err);
     process.exit(1);

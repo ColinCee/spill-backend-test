@@ -7,15 +7,22 @@ export class Appointment {
   @PrimaryKey()
   id!: number;
 
-  @Property({ columnType: 'date' })
+  @Property({ length: 6, defaultRaw: `now()` })
   createdAt!: Date;
 
-  @Property({ columnType: 'date' })
+  @Property({ length: 6, defaultRaw: `now()` })
   updatedAt!: Date;
 
-  @ManyToOne({ entity: () => Therapist, index: 'fki_therapist_fk' })
+  @ManyToOne({
+    entity: () => Therapist,
+    onUpdateIntegrity: 'cascade',
+    index: 'fki_therapist_fk',
+  })
   therapist!: Therapist;
 
   @Property()
   typeId!: number;
+
+  @Property({ length: 6 })
+  bookingTime!: Date;
 }

@@ -2,6 +2,8 @@
 
 import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify';
 
+import { appointmentRoutes } from './routes/appointments';
+
 const server: FastifyInstance = Fastify({});
 
 const opts: RouteShorthandOptions = {
@@ -22,6 +24,8 @@ const opts: RouteShorthandOptions = {
 server.get('/ping', opts, async () => {
   return { pong: 'it worked!' };
 });
+
+server.register(appointmentRoutes);
 
 const start = async () => {
   try {

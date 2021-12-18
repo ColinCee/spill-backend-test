@@ -2,15 +2,17 @@ import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
 @Entity()
 export class Specialism {
+
   @PrimaryKey()
   id!: number;
 
-  @Property({ columnType: 'date' })
+  @Property({ length: 6, defaultRaw: `now()` })
   createdAt!: Date;
 
-  @Property({ columnType: 'date' })
+  @Property({ length: 6, defaultRaw: `now()` })
   updatedAt!: Date;
 
   @Property({ columnType: 'text' })
   name!: string;
+
 }

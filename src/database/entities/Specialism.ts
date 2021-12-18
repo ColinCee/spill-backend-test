@@ -1,8 +1,16 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+/* eslint-disable functional/no-this-expression */
+import {
+  Collection,
+  Entity,
+  ManyToMany,
+  PrimaryKey,
+  Property,
+} from '@mikro-orm/core';
+
+import { Therapist } from './Therapist';
 
 @Entity()
 export class Specialism {
-
   @PrimaryKey()
   id!: number;
 
@@ -15,4 +23,6 @@ export class Specialism {
   @Property({ columnType: 'text' })
   name!: string;
 
+  @ManyToMany(() => Therapist, (therapist) => therapist.specialism)
+  therapist = new Collection<Therapist>(this);
 }

@@ -4,7 +4,13 @@ import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify';
 
 import { appointmentRoutes } from './routes/appointments';
 
-const server: FastifyInstance = Fastify({});
+const server: FastifyInstance = Fastify({
+  ajv: {
+    customOptions: {
+      coerceTypes: 'array',
+    },
+  },
+});
 
 const opts: RouteShorthandOptions = {
   schema: {

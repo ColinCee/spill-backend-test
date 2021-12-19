@@ -10,6 +10,6 @@ export const findAppointmentsByRequest = async (request: FastifyRequest) => {
     {
       $and: createFilterFromRequest(request),
     },
-    ['therapist']
+    ['therapist', 'type']
   );
 };

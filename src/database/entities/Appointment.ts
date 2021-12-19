@@ -26,4 +26,7 @@ export class Appointment {
 
   @Property({ length: 6 })
   bookingTime!: Date;
+
+  @Property()
+  duration!: number;
 }

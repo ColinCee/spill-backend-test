@@ -7,7 +7,10 @@ const config: Options = {
   dbName: 'postgres',
   user: 'postgres',
   password: 'password',
-  host: 'localhost',
+  // For localhost development
+  // host: 'localhost',
+  // For docker-compose development
+  host: 'database',
   entities: ['./build/src/database/entities'],
   entitiesTs: ['./src/database/entities'],
 };

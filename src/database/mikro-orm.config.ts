@@ -8,7 +8,7 @@ const config: Options = {
   user: 'postgres',
   password: 'password',
   host: 'localhost',
-  entities: ['./build/database/entities'],
+  entities: ['./build/src/database/entities'],
   entitiesTs: ['./src/database/entities'],
 };
 

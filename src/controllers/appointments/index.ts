@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
 
-import { getAppointments } from './get';
+import { getAppointments } from './getAppointments';
 
 export const appointmentRoutes: FastifyPluginAsync = async (fastify) => {
   await getAppointments(fastify);

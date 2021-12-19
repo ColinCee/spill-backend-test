@@ -2,7 +2,7 @@
 
 import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify';
 
-import { appointmentRoutes } from './routes/appointments';
+import { appointmentRoutes } from './controllers/appointments';
 
 const server: FastifyInstance = Fastify({
   ajv: {

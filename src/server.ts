@@ -1,6 +1,4 @@
-// import { IncomingMessage, Server, ServerResponse } from 'http';
-
-import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify';
+import Fastify, { FastifyInstance } from 'fastify';
 
 import { appointmentRoutes } from './controllers/appointments';
 
@@ -10,25 +8,6 @@ const server: FastifyInstance = Fastify({
       coerceTypes: 'array',
     },
   },
-});
-
-const opts: RouteShorthandOptions = {
-  schema: {
-    response: {
-      200: {
-        type: 'object',
-        properties: {
-          pong: {
-            type: 'string',
-          },
-        },
-      },
-    },
-  },
-};
-
-server.get('/ping', opts, async () => {
-  return { pong: 'it worked!' };
 });
 
 server.register(appointmentRoutes);

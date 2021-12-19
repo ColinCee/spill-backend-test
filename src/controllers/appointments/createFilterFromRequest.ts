@@ -20,7 +20,7 @@ export const createFilterFromRequest = (request: FastifyRequest) => {
   }
 
   if (specialism) {
-    filter.push(bySpecialismFilter(specialism));
+    filter.push(...bySpecialismFilter(specialism));
   }
 
   return filter;
@@ -42,13 +42,11 @@ const byTypeFilter = (type: string) => {
 };
 
 const bySpecialismFilter = (specialism: string[]) => {
-  return {
+  return specialism.map((s) => ({
     therapist: {
       specialism: {
-        name: {
-          $in: specialism,
-        },
+        name: { $eq: s },
       },
     },
-  };
+  }));
 };

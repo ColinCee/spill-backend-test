@@ -1,23 +1,9 @@
-import {
-  FastifyInstance,
-  FastifyRequest,
-  RouteShorthandOptions,
-} from 'fastify';
+import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 
 import { createApiResponse } from '../../createApiResponse';
-import { initDatabase } from '../../database/initDatabase';
 
-import { createFilterFromRequest } from './createFilterFromRequest';
+import { findAppointmentsByRequest } from './queries';
 
-const findAppointmentsByRequest = async (request: FastifyRequest) => {
-  const { appointmentRepository } = await initDatabase();
-  return appointmentRepository.find(
-    {
-      $and: createFilterFromRequest(request),
-    },
-    ['therapist']
-  );
-};
 export const getAppointments = async (fastify: FastifyInstance) => {
   // This defines basic request validation
   const opts: RouteShorthandOptions = {
